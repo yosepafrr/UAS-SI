@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seblak BDR</title>
+    <link rel="stylesheet" href="src/output.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            background-image: url('Pictures/BG.png');
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-[#B55353] p-10 flex justify-center">
+        <span class="text-white text-3xl font-semibold">SEBLAK BDR!</span>
+    </header>
+
+        <div class="flex flex-col items-center text-white gap-14 mt-[60px] mb-[60px]">
+            <img class="w-[250px]" src="Pictures/LOGO.png" alt="logo">
+            <div class="flex flex-col gap-4">
+                <h1 class="text-3xl text-center font-semibold">Selamat datang di Seblak BDR!</h1>
+                <p class="text-2xl text-center">Silahkan mengambil nomor antrian setelah selesai memilih pesanan anda.</p>
+            </div>
+            <form action="./User./takeAntri.php" method="post">
+                <button type="submit" class="bg-[#B55353] py-2 px-5 rounded-xl hover:bg-[#792d2d]" value="ambil nomor antrian">ambil nomor antrian</button>
+            </form>
+        </div>
+</body>
+</html>
