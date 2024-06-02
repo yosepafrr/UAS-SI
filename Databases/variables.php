@@ -7,6 +7,7 @@
     $nomor_antrian = intval($row["jumlah"]);
 
 
+
     $sql = "SELECT jml_pesanan FROM pesanan ORDER BY id DESC LIMIT 1"; 
     $result = $conn->query($sql);
 
@@ -24,7 +25,7 @@
     if ($result->num_rows > 0) {
         // Mengambil hasil query
         $row = $result->fetch_assoc();
-        $status = $row['stat']; // Menyimpan nilai jml_pesanan pada baris terakhir ke dalam variabel
+        $status = $row['stat'];
     } else {
         echo "Tidak ada data ditemukan";
     }

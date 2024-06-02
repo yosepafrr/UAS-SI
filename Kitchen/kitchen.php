@@ -41,7 +41,12 @@
     <?php
     include('C:\xampp\htdocs\SI\Databases\variables.php');
 
-    $status_string = ($status == 1) ? "Siap" : "Belum Siap";
+    $sql = "SELECT * FROM pesanan order by id;";
+    $qry = mysqli_query($conn, $sql) or die ("Proses cetak tabel gagal");                    
+
+
+
+
 
     ?>
 
@@ -51,22 +56,28 @@
         </header>
         <div class="flex flex-col justify-center gap-5 items-center mt-24">
             <h1 class="font-bold text-2xl">LIST ANTRIAN PESANAN</h1>
+            <div class="flex gap-10">
+            <td><form action="ubahStatus.php" method="post"><button type="submit" class="bg-[#B55353] py-2 text-white px-5 rounded-xl hover:bg-[#792d2d]" value="ambil nomor antrian">siap</button></form></td>
+            <td><form action="deleteAntrian.php" method="post"><button type="submit" class="bg-[#B55353] py-2 text-white px-5 rounded-xl hover:bg-[#792d2d]" value="ambil nomor antrian">hapus antrian</button></form></td>
+            </div>
             <table>
                 <thead>
-                    <th>No Antrian</th>
+                    <th class="bg-gray-200">No Antrian</th>
                     <th>Jumlah Pesanan</th>
                     <th>Status</th>
-                    <th>Siapkan</th>
-                    <th>Hapus Antrian</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><?php echo $nomor_antrian ?></td>
-                        <td><?php echo $jml_pesanan_terakhir ?></td>
-                        <td><?php echo $status_string ?></td>
-                        <td><button type="submit" class="bg-[#B55353] py-2 text-white px-5 rounded-xl hover:bg-[#792d2d]" value="ambil nomor antrian">siap</button></td>
-                        <td> <form action="deleteAntrian.php" method="post"><button type="submit" class="bg-[#B55353] py-2 text-white px-5 rounded-xl hover:bg-[#792d2d]" value="ambil nomor antrian">hapus antrian</button></form></td>
-                    </tr>
+                    <?php 
+                    while ($antrian = mysqli_fetch_row($qry)) {
+                        $status_string = ($antrian[1] == 1) ? "Siap" : "Belum Siap";
+                        $no_antrian = $antrian[3] + 1 ;
+                    echo'<tr>
+                        <td class="bg-gray-100">' . $no_antrian . '</td>
+                        <td>' . $antrian[2] . '</td>
+                        <td>' . $status_string . '</td>
+                    </tr>';
+                    }
+                ?>
                 </tbody>
             </table>
         </div>
